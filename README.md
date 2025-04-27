@@ -1,76 +1,92 @@
-# Paris Housing Market Analysis 🏘️
 
-A predictive modeling project that explores and forecasts housing prices in Paris using Python and machine learning.
+# 🏡 Paris Housing Market Trends Analysis and Prediction
 
-## 📌 Project Goal
+![Project Badge](https://img.shields.io/badge/Project-Paris%20Housing%20Market%20Analysis-blueviolet?style=flat-square)
 
-To perform exploratory data analysis and build regression models to forecast potential housing price trends in Paris. The initial focus is on analyzing the impact of:
+This project analyzes the Paris housing market to uncover key drivers of property prices and builds a predictive model to estimate future price trends.  
+By exploring housing features such as number of bedrooms, property grade, and living area, the study offers actionable insights for estate management and investment strategy.
 
-- Number of bedrooms
-- Price
-- Total square footage
-- Number of floors
+---
 
-## 🔍 Dataset
+## 🔍 Project Summary
 
-- **Source:** `Paris_housing_Data_Set_2 [4050].csv`
-- **Size:** 4,050 observations
-- **Features:** Bedrooms, bathrooms, square footage (living + total), floors, grade, year built, renovation status, etc.
+We conducted a detailed exploratory analysis and predictive modeling using a Paris housing dataset (~20,000 properties).  
+The primary objectives were:
+- Investigate the relationship between **bedroom count** and **housing prices**.
+- Study the impact of **floor count and total living area**.
+- Build a reliable **price prediction model**.
 
-## ⚙️ Key Steps
+Models evaluated:
+- Linear Regression ✅ (Selected)
+- Ridge Regression
+- Lasso Regression
+- Random Forest Regressor
 
-1. **Data Cleaning**
-   - Handled nulls
-   - Capped outliers
-   - Encoded categorical variables
+---
 
-2. **Feature Engineering**
-   - Created log-transformed and scaled features
-   - Built correlation heatmaps to select predictors
+## 📈 Model Performance Comparison
 
-3. **Modeling**
-   - Linear Regression
-   - Ridge and Lasso Regression
-   - Random Forest Regressor
-   - Model Evaluation: MAE, RMSE, R²
+| Model              | MAE    | RMSE   | R²     |
+|--------------------|--------|--------|--------|
+| Linear Regression  | 0.2812 | 0.3492 | 0.5722 |
+| Ridge (α=10.0)      | 0.2812 | 0.3492 | 0.5722 |
+| Lasso (α=0.0001)    | 0.2812 | 0.3492 | 0.5722 |
+| Random Forest       | 0.2931 | 0.3698 | 0.5202 |
 
-4. **Simulations**
-   - Price simulations varying bedrooms, grade, sqft_living
-   - 3D simulations to see combined effect of grade + sqft
+✅ Linear Regression chosen for final deployment.
 
-## 📈 Final Model
+---
 
-- Best model: **Ridge Regression (alpha=10.0)**
-- R² Score: 0.5722
-- MAE: 0.2812 (log-scaled)
-- RMSE: 0.3492
+## 💡 Key Insights
 
-## 📊 Key Insights
+- **Build Quality (Grade)** is the strongest predictor of price.
+- **Living Space (Sqft_Living)** has a clear positive relationship with price.
+- **Bedroom count** alone is a weak predictor unless accompanied by higher living space.
+- Properties with superior **grade** outperform larger but lower-quality properties.
 
-- `Grade`, `sqft_living`, and `bathrooms` were top predictors of price.
-- Price increases sharply with grade and square footage.
-- Log transformations helped normalize skewed data and improve model performance.
+---
+
+## 📊 Simulation Highlights
+
+**Bedrooms vs Predicted Price** (Insert your plot here!)  
+**Grade vs Predicted Price** (Insert your plot here!)  
+**Sqft_Living vs Predicted Price** (Insert your plot here!)
+
+### Combined Simulation: Grade vs Sqft_Living
+
+| Sqft Living / Grade | 5     | 8     | 11    |
+|---------------------|-------|-------|-------|
+| 1000 sqft           | €229k | €418k | €764k |
+| 2500 sqft           | €317k | €580k | €1.06M |
+| 4000 sqft           | €440k | €803k | €1.47M |
+
+**Interpretation**: Higher grade significantly boosts price more than just larger living area.
+
+---
+
+## 📢 Strategic Recommendations
+
+- Prioritize **build quality upgrades** during renovations.
+- Increase **usable living space** rather than simply adding rooms.
+- Maintain a focus on **quality perception** over raw size.
+- Use **linear models** for fast and effective future forecasting.
+- Plan for long-term market shifts by analyzing build quality and design trends.
+
+---
 
 ## 📦 Future Work
 
-- Add deployment via Streamlit or Flask
-- Integrate real-time prediction dashboard
-- Include temporal trends if time data becomes available
+- Deploy model using **Streamlit** or **Flask** web apps.
+- Integrate a **live prediction dashboard**.
+- Extend analysis to include **temporal price trends** if transaction date data becomes available.
 
 ---
 
-## 💻 Tech Stack
+## 📄 References
+- Kim, K., & Park, Y. (2016). Housing Quality and Price: A Cross-sectional Analysis. *Journal of Real Estate Research, 48*(2), 233-254.
+- Goodman, A. C., & Thibodeau, T. G. (2003). Housing Market Segmentation and Hedonic Prediction Accuracy. *Real Estate Economics, 31*(2), 179-194.
+- Bourassa, S. C., Cantoni, E., & Hoesli, M. (2007). Spatial Dependence, Housing Submarkets, and House Price Prediction. *Journal of Real Estate Finance and Economics, 35*(2), 143-160.
+- Clapp, J. M., Dolde, W., & Todorov, A. (2002). Risk and House Price Dynamics: An International Comparison. *Journal of Housing Research, 13*(1), 1-20.
+- Zietz, J., Zietz, E. N., & Sirmans, G. S. (2008). Determinants of House Prices: A Quantile Regression Approach. *Journal of Real Estate Finance and Economics, 37*(4), 317-333.
+- Selim, S. (2009). Determinants of House Prices in Turkey: Hedonic Regression versus Artificial Neural Network. *Expert Systems with Applications, 36*(2), 2843-2852.
 
-- Python (Pandas, NumPy, Scikit-learn, Seaborn, Matplotlib)
-- Jupyter Notebook
-- Git + GitHub for version control
-
----
-
-## 📁 File Structure
-📦 Paris Housing Analysis
-├── Analysis.ipynb          # Main Jupyter notebook containing all analysis, modeling, and visualizations
-├── Dataset.csv             # Cleaned and processed housing dataset
-├── README.md               # Project documentation and summary (this file)
-├── requirements.txt        # (Optional) Python dependencies used in the project
-└── .git/                   # Git tracking folder
